@@ -5,8 +5,6 @@
 int main() {
     int a, b;
     int resultado;
-    float resultado_division;
-    long resultado_potencia;
     bool condicion=true;
     int opcion;
 
