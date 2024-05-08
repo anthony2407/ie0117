@@ -1,40 +1,73 @@
-#include<stdio.h>
+#include <stdio.h>
 #include "operaciones_bit_to_bit.h"
 // Implementación de las funciones declaradas en operaciones_bit_to_bit.h
-int bitwise_and(int a, int b){
-    return a&b;
+int bitwise_and(int a, int b)
+{
+    return a & b;
 };
-int bitwise_or(int a, int b){
+int bitwise_or(int a, int b)
+{
     return a | b;
 };
-int bitwise_xor(int a, int b){
-    return a^b;
+int bitwise_xor(int a, int b)
+{
+    return a ^ b;
 };
-int bitwise_not(int a){
-    return !a;
+int bitwise_not(int a)
+{
+    return ~a;
 };
 
-void print_binary(int a){
-   short binaryNumber[16];//se declara un arreglo de 16 elementos
-   int contador=0;
-   int aux=a;
-   
-   while(aux>0 && a!=1){ // mientras a sea mayor a 0 y diferente de 1
-    binaryNumber[contador]=aux%2;// a cada posicion del arreglo se le asigna el residuo de la division de a entre 2
-    aux=aux/2;// se divide a entre 2 que eventualmente sera 0
-    contador++;
-    }
-    if(a==1) // si a es igual a 1
+void print_binary(int a)
+{
+
+    int listBinary[16];
+    int contador = 0;
+    // Para enteros positivos
+    while (a > 0)
     {
-        printf("El numero binario es \n");
-        printf("\t 0     1");
+        listBinary[contador] = a % 2;
+        a = a / 2;
+        contador++;
     }
-    else{  
-        printf("El numero binario es \n");
-        for (int j = contador-1; j >=0; j--) // recorre el arreglo de manera inversa
+
+    for (int i = contador - 1; i >= 0; i--)
+    {
+        printf("%d\t", listBinary[i]);
+    }
+
+    // Para enteros negativos
+    if (a < 0)
+    {
+        a = a * -1;
+        while (a > 0)
         {
-            printf("\t%d",binaryNumber[j]); // imprime el valor de cada posicion diferente de laspor default del arreglo
+            int binaryNumber = a % 2;
+            listBinary[contador] = binaryNumber;
+            a = a / 2;
+            contador++;
         }
+        for (int i = contador; i >=0 ; i--) // Invierte los valores del arreglo para que se muestre el número en binario correcto (complemento a 2)
+        {   
+            switch (listBinary[i])
+            {
+            case 1:
+                listBinary[i] = 0;
+                break;
+            case 0:
+                listBinary[i] = 1;
+                break;
+            default:
+                break;
+            }
         }
-  
-};
+        listBinary[0] = listBinary[0] + 1; // Suma 1 al número en binario
+
+       
+
+        for (int i = contador; i >= 0; i--) // Imprime el número en binario
+        {
+            printf("%d\t", listBinary[i]);
+        }
+    }
+}
