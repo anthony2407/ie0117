@@ -39,7 +39,7 @@ void print_binary(int a)
     // Para enteros negativos
     if (a < 0)
     {
-        a = a * -1;
+        a = ~a + 1;
         while (a > 0)
         {
             int binaryNumber = a % 2;
@@ -49,17 +49,7 @@ void print_binary(int a)
         }
         for (int i = contador; i >=0 ; i--) // Invierte los valores del arreglo para que se muestre el número en binario correcto (complemento a 2)
         {   
-            switch (listBinary[i])
-            {
-            case 1:
-                listBinary[i] = 0;
-                break;
-            case 0:
-                listBinary[i] = 1;
-                break;
-            default:
-                break;
-            }
+            listBinary[i] =listBinary[i]==0?1:0; 
         }
         listBinary[0] = listBinary[0] + 1; // Suma 1 al número en binario
 
