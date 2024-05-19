@@ -1,0 +1,1 @@
+int mcd(int, int); // declaración de la función mcd que se implementará en mcdImplementado.c
