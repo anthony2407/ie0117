@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-
+// Laboratorio 08 
+// Antony Medina Garcia
+// C14600
 typedef struct // definición de la estructura
 {
     // se definen los campos de la estructura
@@ -15,9 +17,10 @@ typedef struct // definición de la estructura
 } datos_persona;
 
 void setDatos(datos_persona *persona){ // función para ingresar los datos de la persona que recibe como parámetro un puntero a la estructura
+    // Se validan los datos ingresados
     printf("Ingrese el nombre: ");
     scanf("%s", persona->nombre);
-    if(strlen(persona->nombre) > 20){
+    if(strlen(persona->nombre) > 20){ 
         printf("El nombre no puede tener más de 20 caracteres\n");
         exit(1);
     }
@@ -33,8 +36,8 @@ void setDatos(datos_persona *persona){ // función para ingresar los datos de la
 
     printf("Ingrese el telefono: ");
     scanf("%d", &persona->telefono);
-    if(persona->telefono < 1000000 || persona->telefono > 9999999){
-        printf("El telefono debe tener 7 dígitos\n");
+    if(persona->telefono < 10000000 || persona->telefono > 99999999){
+        printf("El telefono debe tener 8 dígitos\n");
         exit(1);
     }
     getchar(); 
